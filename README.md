@@ -16,16 +16,16 @@ The `state.py` what is a state. It must be inherited by all state childs classes
 It creates static methods and elements that are shared by all children.
 The children (states machine classes) must be layed like the following example:
 
->>> class StateOne(State):
->>>
->>>     def __init__(self, name) -> None:
->>>         super().__init__(name)
->>>     def event(self):
->>>         # Conditions that return the other states as classes like:
->>>         if condition:
->>>             return StateTwo()
->>>         else:
->>>             return self # returns itself, doesnt change state
+     class StateOne(State):
+
+         def __init__(self, name) -> None:
+             super().__init__(name)
+         def event(self):
+             # Conditions that return the other states as classes like:
+             if condition:
+                 return StateTwo()
+             else:
+                 return self # returns itself, doesnt change state
 
 ----
 ### Basic Event List operations
@@ -43,5 +43,7 @@ Handles the event list operation and it's layed like:
 
 - `clear()` -> clear operation; clears the entire event array
 
->>> machine = StateOne()
->>> machine.add("read_all_bases") # adds the event read_all_bases to the event list
+Here's an example of how to manipulate the events:
+
+    machine = StateOne()
+    machine.add("read_all_bases") # adds the event read_all_bases to the event list
