@@ -39,7 +39,7 @@ Handles the event list operation and it's layed like:
 
 - `remove(data : str)` -> remove operation; param: str (event)
 
-- `contains(data : str)` -> checks if event (str) is in event list
+- `contains(data : str)` -> returns `True` if event (str) is in event list; 
 
 - `pop()` -> pop operation; para: str (event)
 
@@ -49,3 +49,4 @@ Here's an example of how to manipulate the events:
 
     machine = StateOne()
     machine.add("read_all_bases") # adds the event read_all_bases to the event list
+    machine = machine.event() # updates the current event
