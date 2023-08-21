@@ -23,7 +23,7 @@ class State:
     >>>     def event(self):
     >>>         # Conditions that return the other states as classes like:
     >>>         if condition:
-    >>>             return StateTwo()
+    >>>             return StateTwo # StateTwo is the class that represents the state two
     >>>         else:
     >>>             return self # returns itself, doesnt change state
 
@@ -85,6 +85,14 @@ class State:
         '''Return the event list as an array of str
         '''
         return State.__eventOp(-1)
+    
+    def updateEvent(self):
+        '''Responsible for updating the states of the machine instance.
+        It replaces this very instance with the next class (state) based on the 
+        machine modelling.
+        '''
+
+        self.__class__ = self.event()
     
     @classmethod
     def __eq__(cls,comparison):
@@ -178,7 +186,7 @@ if __name__ == "__main__":
         '''
         
         def event(self):
-            return StateOne()
+            return StateOne
 
 
     a = StateOne("flying")

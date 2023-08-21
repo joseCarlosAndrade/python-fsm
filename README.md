@@ -23,10 +23,17 @@ The children (states machine classes) must be layed like the following example:
          def event(self):
              # Conditions that return the other states as classes like:
              if condition:
-                 return StateTwo()
+                 return StateTwo
              else:
                  return self # returns itself, doesnt change state
 
+    class StateTwo(State):
+        '''
+        StateTwo description
+        '''
+        
+        def event(self):
+            return StateOne
 ----
 
 ### Basic Event List operations

@@ -18,8 +18,7 @@ class Stopped(State):
     
     def event(self):
         if self.contains('start') and not self.contains('target_reached'):
-            
-            return Moving()
+            return Moving # You CANT return an object like Class(), it has to be the class (withou parentesis)
 
         return self
 
@@ -27,10 +26,10 @@ class Moving(State):
     
     def event(self):
         if self.contains('wall'):
-            return BreakingWall()
+            return BreakingWall
         
         elif self.contains('target_reached'):
-            return Stopped()
+            return Stopped
 
         return self
 
@@ -41,7 +40,7 @@ class BreakingWall(State):
             return self
     
         else:
-            return Moving()
+            return Moving
         
 
     
@@ -89,7 +88,8 @@ Current state and event list: {car}; Event List: {car.getAll()}\n\n')
     
 
     
-    car = car.event() # updates state based on stored events
+    # car = car.event() # old but it still workds, not fancy enough, updates state based on stored events
+    car.updateEvent() # Updates state based on stored events (it replaces the old instance)
 
 
 print(f"Cycle is finished. Event list: {car.getAll()}")
