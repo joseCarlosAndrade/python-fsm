@@ -12,9 +12,9 @@ Stopped -- start --> Moving (repeat until 'wall' is inserted to event list) -- t
 from state import State
 import time
 
+# FSM MODELLING (I recommend to put these on a separated file)
+
 class Stopped(State):
-    def __init__(self, name="") -> None: # remove? maybe not necessary
-        super().__init__(name)
     
     def event(self):
         if self.contains('start') and not self.contains('target_reached'):
@@ -24,8 +24,6 @@ class Stopped(State):
         return self
 
 class Moving(State):
-    def __init__(self, name="") -> None:
-        super().__init__(name)
     
     def event(self):
         if self.contains('wall'):
@@ -37,8 +35,6 @@ class Moving(State):
         return self
 
 class BreakingWall(State):
-    def __init__(self, name="") -> None:
-        super().__init__(name)
     
     def event(self):
         if self.contains('wall'):
@@ -49,7 +45,7 @@ class BreakingWall(State):
         
 
     
-# code
+# FSM IMPLEMENTATION
 
 walls = 2
 car = Stopped("nome")
@@ -87,7 +83,7 @@ Current state and event list: {car}; Event List: {car.getAll()}\n\n')
         # print(car)
         # do stuff to break wall
         print('Breaking wall..')
-        time.sleep(3)
+        time.sleep(1)
         print('Wall broke, popping wall from event list...')
         car.pop()
     

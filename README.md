@@ -12,14 +12,14 @@ For a solid example, check `example.py``.
 
 ## How to implement
 
-The `state.py` what is a state. It must be inherited by all state childs classes.
+The `state.py` what is a state. It must be inherited by all child state classes.
 It creates static methods and elements that are shared by all children.
 The children (states machine classes) must be layed like the following example:
 
      class StateOne(State):
+        '''State description (documentation)
+        '''
 
-         def __init__(self, name) -> None:
-             super().__init__(name)
          def event(self):
              # Conditions that return the other states as classes like:
              if condition:
@@ -28,7 +28,9 @@ The children (states machine classes) must be layed like the following example:
                  return self # returns itself, doesnt change state
 
 ----
+
 ### Basic Event List operations
+
 Handles the event list operation and it's layed like:
 
 - `getAll()` -> return an array with all the events

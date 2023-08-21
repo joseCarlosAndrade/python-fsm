@@ -20,8 +20,6 @@ class State:
     The children (states machine classes) must be layed like the following example:
     
     >>> class StateOne(State):
-    >>>     def __init__(self, name) -> None:
-    >>>         super().__init__(name)
     >>>     def event(self):
     >>>         # Conditions that return the other states as classes like:
     >>>         if condition:
@@ -46,16 +44,15 @@ class State:
 
     '''
     __allowedOperations = [-1, 0, 1, 2, 3, 4]
-
     __eventList = []
 
 
     def __init__(self, name="") -> None:
-        self.name = name # talvez seja util? nao sei, ponderar depois
+        self.name = name # TODO: is this really useful?
         
 
     def __repr__(self) -> str:
-        return "null" #ignorar eu tava experimentando funcoes
+        return 'none' 
     
     # State Machine operations
 
@@ -91,12 +88,16 @@ class State:
     
     @classmethod
     def __eq__(cls,comparison):
+        '''Comparison class method that is called when the comparison
+        between an instance of this class is compared with another element
+        '''
         return cls.__name__ == comparison
     
 
     @staticmethod
     def __eventOp(operation : int, data :str = ""):
         '''
+        TODO: does it need to be static? 
         Handles the event list operation and it's layed like:\n
             -1 -> return an array with all the events \n
             0 -> add operation; param: str (event)\n
@@ -112,7 +113,7 @@ class State:
         if operation not in State.__allowedOperations:
             raise Exception("Operation not found")
         
-        # {}
+        
         if operation == 0: # Add
             State.__eventList.append(data)
 
@@ -147,17 +148,16 @@ class State:
         Each child state class must have names layed like:
         
         >>> class StateName(State):
-            \'\'\'StateDocumentation\'\'\'
+        >>> machine = StateName()
+        >>> print(machine)
+            \'StateName\'
         '''
         return cls.__name__
     
     def getName(self):
         return self.name
 
-    # @classmethod
-    # def __doc__(cls):
-    #     return cls.__doc__
-
+# EXAMPLes
 
 if __name__ == "__main__":
 
@@ -165,18 +165,20 @@ if __name__ == "__main__":
         '''
         StateOne documentation
         '''
-        def __init__(self, name) -> None:
-            super().__init__(name)
 
         def event(self):
             # conditions
-            pass
+            # if condition:
+            #   return StateTwo
+            return self
 
     class StateTwo(State):
-        def __init__(self, name="") -> None:
-            super().__init__(name)
-
-
+        '''
+        StateTwo documentation
+        '''
+        
+        def event(self):
+            return StateOne()
 
 
     a = StateOne("flying")
@@ -193,7 +195,7 @@ if __name__ == "__main__":
     print(a.getAll())
 
     if a == 'StateOne':
-        print(f"igual: {a}")
+        print(f"it is equal (__eq__() being called): {a}")
     else:
         print('not')
     '''
