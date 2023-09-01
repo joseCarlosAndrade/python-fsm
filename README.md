@@ -56,4 +56,4 @@ Here's an example of how to manipulate the events:
 
     machine = StateOne()
     machine.add("read_all_bases") # adds the event read_all_bases to the event list
-    machine = machine.event() # updates the current event
+    machine.updateEvent() # updates the current event
