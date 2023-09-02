@@ -16,6 +16,7 @@ The `state.py` what is a state. It must be inherited by all child state classes.
 It creates static methods and elements that are shared by all children.
 The children (states machine classes) must be layed like the following example:
 
+```python
      class StateOne(State):
         '''State description (documentation)
         '''
@@ -34,6 +35,8 @@ The children (states machine classes) must be layed like the following example:
         
         def event(self):
             return StateOne
+```
+
 ----
 
 ### Basic Event List operations
