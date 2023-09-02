@@ -56,6 +56,8 @@ Handles the event list operation and it's layed like:
 
 Here's an example of how to manipulate the events:
 
+```python
     machine = StateOne()
     machine.add("read_all_bases") # adds the event read_all_bases to the event list
     machine.updateEvent() # updates the current event
+```
