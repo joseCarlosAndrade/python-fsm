@@ -4,15 +4,14 @@ My implementation of a Finite State Machine using Python 3 with OOP.
 
 ----
 
-A **Finite State Machine** is a way of representing a problem through possible states that the process can achieve, and then, based on the current state and
-on the events that are happening, it can change to other states or stay as it is.
+A **Finite State Machine** is a way of representing a problem through possible states that the process can achieve, and then, based on the current state and on the events that are happening, it can change to other states or stay as it is.
 For a solid example, check `example.py``.
 
 ----
 
 ## How to implement
 
-The `state.py` what is a state. It must be inherited by all child state classes.
+The `state.py` defines what is a state. It must be inherited by all children state classes.
 It creates static methods and elements that are shared by all children.
 The children (states machine classes) must be layed like the following example:
 
